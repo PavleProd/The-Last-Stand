@@ -388,4 +388,4 @@ script = ExtResource("1_lcogy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3wunh")
 animation = &"attack_down_2"
-frame_progress = 0.891068
+frame_progress = 0.224399
