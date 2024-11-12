@@ -1,0 +1,64 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dwtxfpp3hhkjr"]
+
+[ext_resource type="Texture2D" uid="uid://21u0etbukrc2" path="res://Assets/Terrain/Water/Foam/Foam.png" id="1_p51n0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efo0l"]
+texture = ExtResource("1_p51n0")
+texture_region_size = Vector2i(64, 64)
+1:0/animation_columns = 8
+1:0/animation_separation = Vector2i(2, 0)
+1:0/animation_speed = 10.0
+1:0/animation_mode = 1
+1:0/animation_frame_0/duration = 1.0
+1:0/animation_frame_1/duration = 1.0
+1:0/animation_frame_2/duration = 1.0
+1:0/animation_frame_3/duration = 1.0
+1:0/animation_frame_4/duration = 1.0
+1:0/animation_frame_5/duration = 1.0
+1:0/animation_frame_6/duration = 1.0
+1:0/animation_frame_7/duration = 1.0
+1:0/0 = 0
+0:1/animation_columns = 8
+0:1/animation_separation = Vector2i(2, 0)
+0:1/animation_speed = 10.0
+0:1/animation_mode = 1
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/animation_frame_4/duration = 1.0
+0:1/animation_frame_5/duration = 1.0
+0:1/animation_frame_6/duration = 1.0
+0:1/animation_frame_7/duration = 1.0
+0:1/0 = 0
+1:1/0 = 0
+2:1/animation_columns = 8
+2:1/animation_separation = Vector2i(2, 0)
+2:1/animation_speed = 10.0
+2:1/animation_mode = 1
+2:1/animation_frame_0/duration = 1.0
+2:1/animation_frame_1/duration = 1.0
+2:1/animation_frame_2/duration = 1.0
+2:1/animation_frame_3/duration = 1.0
+2:1/animation_frame_4/duration = 1.0
+2:1/animation_frame_5/duration = 1.0
+2:1/animation_frame_6/duration = 1.0
+2:1/animation_frame_7/duration = 1.0
+2:1/0 = 0
+1:2/animation_columns = 8
+1:2/animation_separation = Vector2i(2, 0)
+1:2/animation_speed = 10.0
+1:2/animation_mode = 1
+1:2/animation_frame_0/duration = 1.0
+1:2/animation_frame_1/duration = 1.0
+1:2/animation_frame_2/duration = 1.0
+1:2/animation_frame_3/duration = 1.0
+1:2/animation_frame_4/duration = 1.0
+1:2/animation_frame_5/duration = 1.0
+1:2/animation_frame_6/duration = 1.0
+1:2/animation_frame_7/duration = 1.0
+1:2/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_efo0l")
