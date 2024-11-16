@@ -4,104 +4,44 @@ extends CharacterBody2D
 const SPEED : float = 10000.0
 @export var speed_scale : float = 1.0
 
-enum Direction { NONE, LEFT, RIGHT, UP, DOWN }
-var last_direction : Direction = Direction.NONE
+var movement_direction : Vector2 = Vector2.ZERO
+var is_attacking : bool = false
 
-var animation_in_progress : bool = false
+func _process(_delta: float) -> void:
+	process_input()
+	update_animations()
+	
+func process_input() -> void:
+	# default values
+	movement_direction = Vector2.ZERO
+	is_attacking = false
 
-# TODO: improve this shit code
-
-func _physics_process(delta: float) -> void:
 	if not Input.is_anything_pressed():
 		return
 		
-	var y_movement : float = Input.get_axis("player_move_up", "player_move_down")
-	var x_movement : float = Input.get_axis("player_move_left", "player_move_right")
-	
-	velocity.y = y_movement * SPEED * speed_scale * delta
-	velocity.x = x_movement * SPEED * speed_scale * delta
-	
+	is_attacking = Input.is_action_just_pressed("player_attack")
+
+	movement_direction = Input.get_vector(
+		"player_move_left", 
+		"player_move_right", 
+		"player_move_up", 
+		"player_move_down")
+		
+	# prevent moving faster when going diagonal
+	movement_direction = movement_direction.normalized()
+
+@onready var animation_tree: AnimationTree = $AnimationTree
+func update_animations() -> void:
+	animation_tree.character_direction = movement_direction
+	animation_tree.is_attacking = is_attacking
+
+# process top-down movement 
+func _physics_process(delta: float) -> void:
+	if is_current_state_attack(): # prevent character from moving while attacking
+		return
+
+	velocity = movement_direction * SPEED * speed_scale * delta
 	move_and_slide()
 	
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-func _process(_delta: float) -> void:
-	
-	var actionPerformed = false
-		
-	actionPerformed = process_player_movement(_delta)
-	if actionPerformed:
-		return
-		
-	actionPerformed = process_player_attack(_delta)
-	if actionPerformed:
-		return
-
-	if not Input.is_anything_pressed() and not animation_in_progress:
-		animated_sprite_2d.play("idle")
-		return
-		
-func process_player_movement(_delta: float) -> bool:
-	# We have the same animation for running in every direction
-	# Only difference is flipping horizontally if going left (or left + any other key)
-	if Input.is_action_pressed("player_move_left"):
-		animated_sprite_2d.flip_h = true
-		animated_sprite_2d.play("run_right")
-		last_direction = Direction.LEFT
-		return true
-	elif Input.is_action_pressed("player_move_right"):
-		animated_sprite_2d.flip_h = false
-		animated_sprite_2d.play("run_right")
-		last_direction = Direction.RIGHT
-		return true
-	
-	# if we are going up or down we leave horizontal flipping
-	if Input.is_action_pressed("player_move_down"):
-		animated_sprite_2d.play("run_right")
-		last_direction = Direction.DOWN
-		return true
-		
-	if Input.is_action_pressed("player_move_up"):
-		animated_sprite_2d.play("run_right")
-		last_direction = Direction.UP
-		return true
-	
-	return false
-
-func process_player_attack(_delta: float) -> bool:
-	if not Input.is_action_pressed("player_attack"):
-		return false
-		
-	animation_in_progress = true
-		
-	if Input.is_action_pressed("player_move_up"):
-		animated_sprite_2d.play("attack_up_1")
-	elif Input.is_action_pressed("player_move_down"):
-		animated_sprite_2d.play("attack_down_1")
-	elif Input.is_action_pressed("player_move_left"):
-		animated_sprite_2d.flip_h = true
-		animated_sprite_2d.play("attack_right_1")
-	elif Input.is_action_pressed("player_move_right"):
-		animated_sprite_2d.flip_h = false
-		animated_sprite_2d.play("attack_right_1")
-	else:
-		match last_direction:
-			Direction.LEFT:
-				animated_sprite_2d.flip_h = true
-				animated_sprite_2d.play("attack_right_1")
-			Direction.RIGHT:
-				animated_sprite_2d.flip_h = false
-				animated_sprite_2d.play("attack_right_1")
-			Direction.UP:
-				animated_sprite_2d.play("attack_up_1")
-			Direction.DOWN:
-				animated_sprite_2d.play("attack_down_1")
-			_:
-				animated_sprite_2d.flip_h = false
-				animated_sprite_2d.play("attack_right_1")
-	
-	return true
-	
-	
-
-func _on_animated_sprite_2d_animation_looped() -> void:
-	animation_in_progress = false
+func is_current_state_attack() -> bool:
+	return animation_tree["parameters/playback"].get_current_node() == "Attack"
