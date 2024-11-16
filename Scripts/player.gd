@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED : float = 10000.0
 @export var speed_scale : float = 1.0
 
-var movement_direction : Vector2 = Vector2.ZERO
+var movement_direction : Vector2 = Vector2(0.0, 1.0)
 var is_attacking : bool = false
 
 func _process(_delta: float) -> void:
@@ -37,11 +37,9 @@ func update_animations() -> void:
 
 # process top-down movement 
 func _physics_process(delta: float) -> void:
-	if is_current_state_attack(): # prevent character from moving while attacking
+	if animation_tree.is_current_state_attack(): # prevent character from moving while attacking
 		return
 
 	velocity = movement_direction * SPEED * speed_scale * delta
 	move_and_slide()
 	
-func is_current_state_attack() -> bool:
-	return animation_tree["parameters/playback"].get_current_node() == "Attack"

@@ -464,7 +464,7 @@ blend_point_0/pos = 0.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_duonv")
 blend_point_1/pos = 1.0
 min_space = 0.0
-blend_mode = 2
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d88t1"]
 animation = &"attack_right_1"
@@ -474,10 +474,11 @@ animation = &"attack_right_2"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_jaw4w"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_d88t1")
-blend_point_0/pos = -1.0
+blend_point_0/pos = 0.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_1uxqg")
 blend_point_1/pos = 1.0
-blend_mode = 2
+min_space = 0.0
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvdnq"]
 animation = &"attack_up_1"
@@ -487,10 +488,11 @@ animation = &"attack_up_2"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8h3m0"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_uvdnq")
-blend_point_0/pos = -1.0
+blend_point_0/pos = 0.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_y23d0")
 blend_point_1/pos = 1.0
-blend_mode = 2
+min_space = 0.0
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5c6k"]
 animation = &"attack_down_1"
@@ -500,10 +502,11 @@ animation = &"attack_down_2"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0tvkj"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_e5c6k")
-blend_point_0/pos = -1.0
+blend_point_0/pos = 0.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_7w6pd")
 blend_point_1/pos = 1.0
-blend_mode = 2
+min_space = 0.0
+blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_m81a8"]
 blend_point_0/node = SubResource("AnimationNodeBlendSpace1D_x41yw")
@@ -514,8 +517,8 @@ blend_point_2/node = SubResource("AnimationNodeBlendSpace1D_8h3m0")
 blend_point_2/pos = Vector2(0, -1)
 blend_point_3/node = SubResource("AnimationNodeBlendSpace1D_0tvkj")
 blend_point_3/pos = Vector2(0, 1)
-min_space = Vector2(-1.1, -1.1)
-max_space = Vector2(1.1, 1.1)
+min_space = Vector2(-1.1, -1)
+max_space = Vector2(1.1, 1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vsdlt"]
@@ -596,6 +599,7 @@ advance_condition = &"is_running"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6ne7g"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_m81a8")
 states/Attack/position = Vector2(513, 224)
+states/End/position = Vector2(716, 140)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_un2bq")
 states/Idle/position = Vector2(335, 146)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_oh78l")
