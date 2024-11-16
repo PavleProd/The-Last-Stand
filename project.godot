@@ -14,6 +14,11 @@ config/name="last_standing_island"
 run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
+[debug]
+
+shapes/collision/shape_color=Color(1, 0, 0, 0.454902)
+shapes/collision/contact_color=Color(0.0341276, 0.632521, 0.671529, 0.8)
+
 [display]
 
 window/size/viewport_width=1920
@@ -54,6 +59,12 @@ player_attack={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Sea"
+2d_physics/layer_2="Walls"
+2d_physics/layer_3="Characters"
 
 [rendering]
 

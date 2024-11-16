@@ -609,10 +609,11 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-248, 22)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_audoe"]
-radius = 16.0
-height = 52.0
+radius = 12.0
+height = 38.0
 
 [node name="player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_1kww3")
 
 [node name="Body" type="Sprite2D" parent="."]
@@ -641,5 +642,6 @@ parameters/Run/blend_position = Vector2(0, 0)
 script = ExtResource("3_b47dp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -7)
+position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_audoe")
+debug_color = Color(0, 0.6, 0.7, 0.42)
