@@ -14,6 +14,12 @@ config/name="last_standing_island"
 run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
+[autoload]
+
+GodotLogger="*res://addons/logger/logger.gd"
+Math="*res://Scenes/math.tscn"
+RenderHelper="*res://Scenes/render_helper.tscn"
+
 [debug]
 
 shapes/collision/shape_color=Color(1, 0, 0, 0.454902)
@@ -23,14 +29,16 @@ shapes/collision/contact_color=Color(0.0341276, 0.632521, 0.671529, 0.8)
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/window_width_override=640
-window/size/window_height_override=360
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="last_standing_island"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/logger/plugin.cfg")
 
 [input]
 

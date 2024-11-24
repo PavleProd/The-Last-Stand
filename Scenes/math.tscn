@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7n1bcw3ldk2a"]
+
+[ext_resource type="Script" path="res://Scripts/math.gd" id="1_nfy5i"]
+
+[node name="Math" type="Node"]
+script = ExtResource("1_nfy5i")
