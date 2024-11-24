@@ -1,8 +1,9 @@
-[gd_scene load_steps=54 format=3 uid="uid://cwmtid7e8dmpj"]
+[gd_scene load_steps=24 format=3 uid="uid://cwmtid7e8dmpj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1kww3"]
 [ext_resource type="Texture2D" uid="uid://cfqw8ikwef63m" path="res://Assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_sxa4b"]
 [ext_resource type="Script" path="res://Scripts/character_animation_tree.gd" id="3_b47dp"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dy0kqegg14wtr" path="res://Animations/character_idle_run_single_attack.tres" id="3_gen5k"]
 
 [sub_resource type="Animation" id="Animation_ruajd"]
 length = 0.001
@@ -416,7 +417,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_xcbc7"]
 resource_name = "run_up"
 length = 0.6
-loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -452,167 +452,11 @@ _data = {
 "run_up": SubResource("Animation_xcbc7")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_utdta"]
-animation = &"attack_left_1"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_duonv"]
-animation = &"attack_left_2"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_x41yw"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_utdta")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_duonv")
-blend_point_1/pos = 1.0
-min_space = 0.0
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d88t1"]
-animation = &"attack_right_1"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1uxqg"]
-animation = &"attack_right_2"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_jaw4w"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_d88t1")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_1uxqg")
-blend_point_1/pos = 1.0
-min_space = 0.0
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvdnq"]
-animation = &"attack_up_1"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y23d0"]
-animation = &"attack_up_2"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_8h3m0"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_uvdnq")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_y23d0")
-blend_point_1/pos = 1.0
-min_space = 0.0
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5c6k"]
-animation = &"attack_down_1"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7w6pd"]
-animation = &"attack_down_2"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_0tvkj"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_e5c6k")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_7w6pd")
-blend_point_1/pos = 1.0
-min_space = 0.0
-blend_mode = 1
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_m81a8"]
-blend_point_0/node = SubResource("AnimationNodeBlendSpace1D_x41yw")
-blend_point_0/pos = Vector2(-1.1, 0)
-blend_point_1/node = SubResource("AnimationNodeBlendSpace1D_jaw4w")
-blend_point_1/pos = Vector2(1.1, 0)
-blend_point_2/node = SubResource("AnimationNodeBlendSpace1D_8h3m0")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeBlendSpace1D_0tvkj")
-blend_point_3/pos = Vector2(0, 1)
-min_space = Vector2(-1.1, -1)
-max_space = Vector2(1.1, 1)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vsdlt"]
-animation = &"idle_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c32ww"]
-animation = &"idle_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2ir6j"]
-animation = &"idle_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ypalx"]
-animation = &"idle_up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_un2bq"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_vsdlt")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_c32ww")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_2ir6j")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_ypalx")
-blend_point_3/pos = Vector2(0, 1)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hmwir"]
-animation = &"run_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c7ulm"]
-animation = &"run_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7shsy"]
-animation = &"run_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x017v"]
-animation = &"run_down"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_oh78l"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_hmwir")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_c7ulm")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_7shsy")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_x017v")
-blend_point_3/pos = Vector2(0, 1)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cmjca"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4kn88"]
-advance_mode = 2
-advance_condition = &"is_running"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7jhhi"]
-advance_mode = 2
-advance_condition = &"is_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_de5ct"]
-advance_mode = 2
-advance_condition = &"is_attacking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t557r"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"is_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1272m"]
-advance_mode = 2
-advance_condition = &"is_attacking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2hstv"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"is_running"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6ne7g"]
-states/Attack/node = SubResource("AnimationNodeBlendSpace2D_m81a8")
-states/Attack/position = Vector2(513, 224)
-states/End/position = Vector2(716, 140)
-states/Idle/node = SubResource("AnimationNodeBlendSpace2D_un2bq")
-states/Idle/position = Vector2(335, 146)
-states/Run/node = SubResource("AnimationNodeBlendSpace2D_oh78l")
-states/Run/position = Vector2(513, 53)
-states/Start/position = Vector2(146, 151)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cmjca"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_4kn88"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_7jhhi"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_de5ct"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_t557r"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_1272m"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_2hstv")]
-graph_offset = Vector2(-248, 22)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_audoe"]
 radius = 12.0
 height = 38.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="DebugPlayer" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 256
 collision_mask = 524
@@ -631,16 +475,12 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_6ne7g")
+tree_root = ExtResource("3_gen5k")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_attacking = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_running = false
 parameters/Attack/blend_position = Vector2(0, 0)
-parameters/Attack/0/blend_position = 0
-parameters/Attack/1/blend_position = 0
-parameters/Attack/2/blend_position = 0
-parameters/Attack/3/blend_position = 0
 parameters/Idle/blend_position = Vector2(-0.0184414, 0.0522089)
 parameters/Run/blend_position = Vector2(0, 0)
 script = ExtResource("3_b47dp")

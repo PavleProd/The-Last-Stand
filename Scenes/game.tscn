@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cba6xn4to46p3" path="res://Assets/Deco/08.png" id="24_rdc2e"]
 [ext_resource type="PackedScene" uid="uid://b1hb1r6m2uuiq" path="res://Scenes/level_change_trigger.tscn" id="25_74k08"]
 [ext_resource type="Texture2D" uid="uid://dtntg6iilq14g" path="res://Assets/Deco/09.png" id="25_g4bji"]
-[ext_resource type="PackedScene" uid="uid://cwmtid7e8dmpj" path="res://Scenes/player.tscn" id="29_gl8m8"]
+[ext_resource type="PackedScene" uid="uid://be5nrri1obolr" path="res://Scenes/torch_goblin.tscn" id="31_cj4ai"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g5bpf"]
 texture = ExtResource("1_xry3o")
@@ -873,7 +873,7 @@ y_sort_enabled = true
 [node name="Tree0" parent="Level3/Trees" instance=ExtResource("8_5ckmn")]
 position = Vector2(-313, -751)
 
-[node name="player" parent="." instance=ExtResource("29_gl8m8")]
-z_index = 5
-y_sort_enabled = false
-position = Vector2(65, -164)
+[node name="TorchGoblin" parent="." instance=ExtResource("31_cj4ai")]
+position = Vector2(-777, 283)
+collision_mask = 518
+motion_mode = 1

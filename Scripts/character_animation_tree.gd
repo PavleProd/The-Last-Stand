@@ -17,7 +17,9 @@ func _process(_delta: float) -> void:
 		this["parameters/Run/blend_position"] = character_direction
 		this["parameters/Idle/blend_position"] = character_direction
 		
-	if is_attacking: # choose attack animation in the moment of the attack
+	# choose attack animation in the moment of the attack
+	# only if character has random attacks
+	if is_attacking and has_random_attack():
 		choose_random_attack()
 
 func choose_random_attack() -> void:
@@ -28,6 +30,9 @@ func choose_random_attack() -> void:
 	this["parameters/Attack/1/blend_position"] = rand01
 	this["parameters/Attack/2/blend_position"] = rand01
 	this["parameters/Attack/3/blend_position"] = rand01
+	
+func has_random_attack() -> bool:
+	return ("parameters/Attack/0" in this)
 
 func is_current_state_attack() -> bool:
 	return this["parameters/playback"].get_current_node() == "Attack"
