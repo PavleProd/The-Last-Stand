@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://85p6n3rs4xmk" path="res://Assets/Resources/Gold Mine/GoldMine_Inactive.png" id="1_lregk"]
 
 [node name="GoldMine" type="StaticBody2D"]
+collision_layer = 512
+collision_mask = 256
 
 [node name="GoldMineInactive" type="Sprite2D" parent="."]
 texture = ExtResource("1_lregk")

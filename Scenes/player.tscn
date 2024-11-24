@@ -614,6 +614,8 @@ height = 38.0
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 256
+collision_mask = 767
 motion_mode = 1
 script = ExtResource("1_1kww3")
 
