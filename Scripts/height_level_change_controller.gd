@@ -25,7 +25,7 @@ func _on_body_entered(body: Node2D) -> void:
 	set_tileset_collision_mask(body, height_level)
 	
 	body.z_index = RenderHelper.height_level_to_z_index(height_level, false)
-	GodotLogger.info("Player height level changed to ", height_level)
+	GodotLogger.info("\"%s\" height level changed to %s" % [body.name, height_level])
 
 # clear first byte of the collision mask
 func clear_tileset_collision_mask(body: CollisionObject2D) -> void:
