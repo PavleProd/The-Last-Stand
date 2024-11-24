@@ -7,7 +7,11 @@ const SPEED : float = 10000.0
 var movement_direction : Vector2 = Vector2(0.0, 1.0)
 var is_attacking : bool = false
 
+@onready var animation_tree: AnimationTree = $AnimationTree
 func _process(_delta: float) -> void:
+	if animation_tree.is_current_state_attack(): # prevent character from moving while attacking
+		return
+
 	process_input()
 	update_animations()
 	
@@ -30,7 +34,6 @@ func process_input() -> void:
 	# prevent moving faster when going diagonal
 	movement_direction = movement_direction.normalized()
 
-@onready var animation_tree: AnimationTree = $AnimationTree
 func update_animations() -> void:
 	animation_tree.character_direction = movement_direction
 	animation_tree.is_attacking = is_attacking

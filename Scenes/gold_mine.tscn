@@ -2,8 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://85p6n3rs4xmk" path="res://Assets/Resources/Gold Mine/GoldMine_Inactive.png" id="1_lregk"]
 
-[node name="GoldMine" type="Node2D"]
+[node name="GoldMine" type="StaticBody2D"]
 
 [node name="GoldMineInactive" type="Sprite2D" parent="."]
-position = Vector2(100, 70)
 texture = ExtResource("1_lregk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-101, -70)
+polygon = PackedVector2Array(78, 109, 73, 105, 58, 107, 50, 104, 45, 101, 38, 102, 33, 98, 26, 96, 21, 95, 24, 86, 26, 77, 29, 72, 29, 66, 35, 58, 41, 55, 78, 56, 94, 59, 109, 56, 117, 55, 121, 49, 144, 53, 157, 48, 163, 48, 167, 55, 169, 63, 172, 70, 173, 76, 175, 82, 175, 88, 177, 90, 178, 92, 179, 95, 177, 98, 173, 98, 170, 98, 169, 100, 165, 100, 163, 102, 160, 102, 155, 102, 153, 105, 147, 107, 140, 107, 136, 106, 132, 104, 130, 107, 129, 104, 127, 105, 125, 107, 120, 109, 114, 109, 109, 110, 105, 108, 91, 109, 86, 111, 79, 110)

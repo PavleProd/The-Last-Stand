@@ -113,10 +113,15 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="sheep" type="Node2D"]
+[node name="sheep" type="StaticBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ev64x")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.285114
+offset = Vector2(0, -15)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -15)
+polygon = PackedVector2Array(-10, 16, -15, 13, -20, 0, 21, 0, 16, 11, 12, 15, 8, 17, 6, 15, -5, 15, -7, 16)

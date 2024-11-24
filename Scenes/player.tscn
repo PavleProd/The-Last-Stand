@@ -613,11 +613,13 @@ radius = 12.0
 height = 38.0
 
 [node name="player" type="CharacterBody2D"]
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_1kww3")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_sxa4b")
+offset = Vector2(0, -30)
 hframes = 6
 vframes = 8
 
@@ -642,6 +644,7 @@ parameters/Run/blend_position = Vector2(0, 0)
 script = ExtResource("3_b47dp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9)
+z_index = 1
+position = Vector2(0, -18)
 shape = SubResource("CapsuleShape2D_audoe")
 debug_color = Color(0, 0.6, 0.7, 0.42)
