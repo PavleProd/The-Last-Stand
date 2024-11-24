@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1hb1r6m2uuiq"]
+
+[ext_resource type="Script" path="res://Scripts/height_level_change_controller.gd" id="1_8mg7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppvwd"]
+size = Vector2(192, 23)
+
+[node name="LevelChangeTrigger" type="Area2D"]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("1_8mg7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("RectangleShape2D_ppvwd")
