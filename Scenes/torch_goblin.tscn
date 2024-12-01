@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://be5nrri1obolr"]
+[gd_scene load_steps=22 format=3 uid="uid://be5nrri1obolr"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_tf1a2"]
+[ext_resource type="Script" path="res://Scripts/ai_character_controller.gd" id="1_aaj1r"]
 [ext_resource type="Texture2D" uid="uid://dqsjydgt3sfhi" path="res://Assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_2wwcy"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dy0kqegg14wtr" path="res://Animations/character_idle_run_single_attack.tres" id="3_5f2nk"]
 [ext_resource type="Script" path="res://Scripts/character_animation_tree.gd" id="3_k8p7s"]
+[ext_resource type="Script" path="res://ai_movement_component.gd" id="5_bekc5"]
+[ext_resource type="PackedScene" uid="uid://cjrrn67crx38w" path="res://Scenes/meta_data.tscn" id="6_gp14f"]
 
 [sub_resource type="Animation" id="Animation_apca3"]
 length = 0.001
@@ -340,8 +342,10 @@ height = 22.0
 [node name="TorchGoblin" type="CharacterBody2D"]
 z_index = 3
 collision_layer = 256
-collision_mask = 6
-script = ExtResource("1_tf1a2")
+collision_mask = 774
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_aaj1r")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("2_2wwcy")
@@ -368,3 +372,19 @@ script = ExtResource("3_k8p7s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -16)
 shape = SubResource("CapsuleShape2D_03m5c")
+
+[node name="MovementComponent" type="Node2D" parent="."]
+script = ExtResource("5_bekc5")
+
+[node name="Timer" type="Timer" parent="MovementComponent"]
+wait_time = 0.1
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="MovementComponent"]
+target_desired_distance = 64.0
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="MetaData" parent="." instance=ExtResource("6_gp14f")]
+
+[connection signal="timeout" from="MovementComponent/Timer" to="MovementComponent" method="_on_timer_timeout"]

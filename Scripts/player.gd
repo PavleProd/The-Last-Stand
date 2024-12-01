@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED : float = 10000.0
 @export var speed_scale : float = 1.0
 
-var movement_direction : Vector2 = Vector2(0.0, 1.0)
+var movement_direction : Vector2 = Vector2(0.0, 0.0)
 var is_attacking : bool = false
 
 @onready var animation_tree: AnimationTree = $AnimationTree

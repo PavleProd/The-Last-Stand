@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cwmtid7e8dmpj"]
+[gd_scene load_steps=25 format=3 uid="uid://cwmtid7e8dmpj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1kww3"]
 [ext_resource type="Texture2D" uid="uid://cfqw8ikwef63m" path="res://Assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_sxa4b"]
 [ext_resource type="Script" path="res://Scripts/character_animation_tree.gd" id="3_b47dp"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://dy0kqegg14wtr" path="res://Animations/character_idle_run_single_attack.tres" id="3_gen5k"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://d3ik55yiwcfh1" path="res://Animations/character_idle_run_multi_attack.tres" id="3_rbtwl"]
+[ext_resource type="PackedScene" uid="uid://cjrrn67crx38w" path="res://Scenes/meta_data.tscn" id="5_phc3b"]
 
 [sub_resource type="Animation" id="Animation_ruajd"]
 length = 0.001
@@ -417,6 +418,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_xcbc7"]
 resource_name = "run_up"
 length = 0.6
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -459,8 +461,9 @@ height = 38.0
 [node name="DebugPlayer" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 256
-collision_mask = 524
+collision_mask = 780
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_1kww3")
 
 [node name="Body" type="Sprite2D" parent="."]
@@ -475,14 +478,18 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = ExtResource("3_gen5k")
+tree_root = ExtResource("3_rbtwl")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_attacking = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_running = false
-parameters/Attack/blend_position = Vector2(0, 0)
+parameters/Attack/blend_position = Vector2(-0.00134146, -0.00487804)
+parameters/Attack/0/blend_position = -0.0017271
+parameters/Attack/1/blend_position = 0
+parameters/Attack/2/blend_position = 0
+parameters/Attack/3/blend_position = 0
 parameters/Idle/blend_position = Vector2(-0.0184414, 0.0522089)
-parameters/Run/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(0.0109756, -0.00486219)
 script = ExtResource("3_b47dp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -490,3 +497,5 @@ z_index = 1
 position = Vector2(0, -18)
 shape = SubResource("CapsuleShape2D_audoe")
 debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MetaData" parent="." instance=ExtResource("5_phc3b")]

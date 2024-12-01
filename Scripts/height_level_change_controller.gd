@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var area_2d: Area2D = $"."
+
 func _ready() -> void:
 	# body_exited could be also used with same effect
 	area_2d.body_entered.connect(_on_body_entered)
@@ -19,11 +20,17 @@ func _on_body_entered(body: Node2D) -> void:
 	if not Math.is_power_of_two(area_2d.collision_layer):
 		GodotLogger.error("Wrong Collision Layer Value!")
 		return
+		
+	var meta_data = body.get_node("$MetaData")
+	if meta_data == null:
+		GodotLogger.warn("Body without meta_data entered!")
+		return
 
 	var height_level = Math.log2(area_2d.collision_layer) + 1
 	clear_tileset_collision_mask(body)
 	set_tileset_collision_mask(body, height_level)
 	
+	meta_data.set_height_level(height_level)
 	body.z_index = RenderHelper.height_level_to_z_index(height_level, false)
 	GodotLogger.info("\"%s\" height level changed to %s" % [body.name, height_level])
 
