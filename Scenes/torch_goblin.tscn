@@ -382,7 +382,10 @@ autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="MovementComponent"]
 target_desired_distance = 64.0
+navigation_layers = 3
 path_postprocessing = 1
+avoidance_enabled = true
+radius = 128.0
 debug_enabled = true
 
 [node name="MetaData" parent="." instance=ExtResource("6_gp14f")]

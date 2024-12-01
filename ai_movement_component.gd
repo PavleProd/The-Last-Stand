@@ -4,11 +4,11 @@ var _movement_direction : Vector2 = Vector2.ZERO
 var _target : Node2D = null
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
-
+@onready var meta_data: Node = $"../MetaData"
 func set_target(target : Node2D) -> void:
 	_target = target
 	
-func get_target(target : Node2D) -> Node2D:
+func get_target() -> Node2D:
 	return _target
 	
 func get_movement_direction() -> Vector2:
@@ -26,4 +26,23 @@ func _on_timer_timeout() -> void:
 	if _target == null:
 		return
 
-	navigation_agent_2d.target_position = _target.global_position
+	var target_meta_data : Node = _target.get_node("MetaData")
+	if target_meta_data == null:
+		GodotLogger.warn("Target doesn't have a meta data!")
+
+	if target_meta_data != null and should_go_to_entrance(target_meta_data):
+		navigation_agent_2d.target_position \
+			= target_meta_data.get_elevated_surface_entrance_coords()
+	else:
+		navigation_agent_2d.target_position = _target.global_position
+	
+"""
+Returns true if target is on elevated terrain
+Movement will shift towards entrance of that elevated terrain
+On colliding with entrance, movement will again be towards the target
+"""
+func should_go_to_entrance(target_meta_data : Node) -> bool:
+		return target_meta_data.get_elevated_surface_entrance() != null and \
+		meta_data.get_elevated_surface_entrance() != target_meta_data.get_elevated_surface_entrance()
+		
+	

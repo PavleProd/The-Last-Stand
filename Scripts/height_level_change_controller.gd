@@ -21,9 +21,9 @@ func _on_body_entered(body: Node2D) -> void:
 		GodotLogger.error("Wrong Collision Layer Value!")
 		return
 		
-	var meta_data = body.get_node("$MetaData")
+	var meta_data = body.get_node("MetaData")
 	if meta_data == null:
-		GodotLogger.warn("Body without meta_data entered!")
+		GodotLogger.warn("Body without meta data entered!")
 		return
 
 	var height_level = Math.log2(area_2d.collision_layer) + 1
@@ -47,7 +47,3 @@ func set_tileset_collision_mask(body: CollisionObject2D, height_level: int) -> v
 	body.set_collision_mask_value(height_level, true)
 	if height_level != 8:
 		body.set_collision_mask_value(height_level + 1, true)
-
-
-func _process(delta: float) -> void:
-	pass

@@ -91,8 +91,11 @@ camera_rotate_right={
 [layer_names]
 
 2d_physics/layer_1="Level0"
+2d_navigation/layer_1="Default"
 2d_physics/layer_2="Level1"
+2d_navigation/layer_2="UnderElevatedSurface"
 2d_physics/layer_3="Level2"
+2d_navigation/layer_3="ElevatedSurface"
 2d_physics/layer_4="Level3"
 2d_physics/layer_5="Level4"
 2d_physics/layer_6="Level5"
