@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var meta_data: Node = $MetaData
 @onready var navigation_agent_2d: NavigationAgent2D = $MovementComponent/NavigationAgent2D
 
-const SPEED : float = 10000.0
+const SPEED : float = 3000.0
 @export var speed_scale : float = 1.0
 @export var target : Node2D = null
 
@@ -39,7 +39,16 @@ func _physics_process(delta: float) -> void:
 	if animation_tree.is_current_state_attack(): # prevent character from moving while attacking
 		return
 
-	velocity = movement_component.get_movement_direction() * SPEED * speed_scale * delta
+	var new_velocity = movement_component.get_movement_direction() * SPEED * speed_scale * delta
+	if navigation_agent_2d.avoidance_enabled:
+		navigation_agent_2d.set_velocity(new_velocity)
+	else:
+		velocity = new_velocity
+
+	move_and_slide()
+	
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
 	move_and_slide()
 	
 func _on_enter_elevated_surface(_entrance : Node2D) -> void:

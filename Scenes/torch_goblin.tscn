@@ -385,9 +385,9 @@ target_desired_distance = 64.0
 navigation_layers = 3
 path_postprocessing = 1
 avoidance_enabled = true
-radius = 128.0
 debug_enabled = true
 
 [node name="MetaData" parent="." instance=ExtResource("6_gp14f")]
 
 [connection signal="timeout" from="MovementComponent/Timer" to="MovementComponent" method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="MovementComponent/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

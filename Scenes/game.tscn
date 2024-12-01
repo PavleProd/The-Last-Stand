@@ -1357,15 +1357,12 @@ position = Vector2(-123, -211)
 
 [node name="TorchGoblin" parent="." node_paths=PackedStringArray("target") instance=ExtResource("31_cj4ai")]
 position = Vector2(-74, 323)
-speed_scale = 0.5
 target = NodePath("../DebugPlayer")
 
 [node name="TorchGoblin2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("31_cj4ai")]
 position = Vector2(-800, 166)
-speed_scale = 0.5
 target = NodePath("../DebugPlayer")
 
 [node name="TorchGoblin3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("31_cj4ai")]
 position = Vector2(-568, 215)
-speed_scale = 0.5
 target = NodePath("../DebugPlayer")
