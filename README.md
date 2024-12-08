@@ -29,6 +29,7 @@ Current Milestone: v0.2:
 - Added pathfinding to AI characters
 
 Current Version Showcase, red lines are for Debug Pathfinding
+
 https://github.com/user-attachments/assets/6c83722a-d623-4365-ad0a-b6f285593ae5
 
 
